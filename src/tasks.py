@@ -116,7 +116,7 @@ def task_noisy_harmonic(n: int, d: int, seed: int) -> Tuple[np.ndarray, np.ndarr
 def task_real_breast_cancer(n: int, d: int, seed: int) -> Tuple[np.ndarray, np.ndarray]:
     """
     Breast Cancer Wisconsin (sklearn 内置)，PCA 降到 d 维后标准化。
-    若 sklearn 数据不可用则回退到合成任务。
+    直接加载 sklearn.datasets.load_breast_cancer（scikit-learn 标准分发自带）。
     """
     from sklearn.datasets import load_breast_cancer
     from sklearn.decomposition import PCA

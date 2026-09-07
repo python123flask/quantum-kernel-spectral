@@ -28,7 +28,7 @@ plt.rcParams.update({
     "font.size": 8,
     "axes.labelsize": 8.5,
     "axes.titlesize": 9,
-    "legend.fontsize": 7,
+    "legend.fontsize": 8,
     "xtick.labelsize": 7.5,
     "ytick.labelsize": 7.5,
     "axes.linewidth": 0.7,
@@ -69,7 +69,7 @@ def fig1():
     axes[0].set_ylabel("quantum advantage")
     axes[0].set_xlim(0.3, 1.0)
     axes[0].legend(frameon=False, handletextpad=0.2, labelspacing=0.3,
-                   loc="lower left", fontsize=6.5)
+                   loc="lower left", fontsize=8)
 
     # 右：任务级 pos_frac vs mean best classical
     agg = df.groupby("task").agg(
@@ -82,7 +82,7 @@ def fig1():
     for _, r in agg.iterrows():
         axes[1].annotate(TASK_LABELS[r["task"]],
                          (r["mean_class"], r["pos_frac"]),
-                         textcoords="offset points", xytext=(4, 4), fontsize=6.5)
+                         textcoords="offset points", xytext=(4, 4), fontsize=8)
     axes[1].set_xlabel("task mean best classical accuracy")
     axes[1].set_ylabel("fraction of configs with\npositive advantage")
     axes[1].set_ylim(-0.03, 0.5)
@@ -111,7 +111,7 @@ def fig2():
         ax.axhline(0.5, color="0.7", ls=":", lw=0.7)
     axes[0].set_xlabel("effective rank")
     axes[0].set_title("concentrated spectra are easier to simulate", fontsize=8.5)
-    axes[0].legend(frameon=False, fontsize=7)
+    axes[0].legend(frameon=False, fontsize=8)
     axes[1].set_xlabel("spectral entropy (bits)")
     axes[1].set_title("spectral entropy vs simulability", fontsize=8.5)
 

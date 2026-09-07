@@ -22,7 +22,7 @@ os.makedirs(OUT, exist_ok=True)
 
 plt.rcParams.update({
     "font.family": "DejaVu Sans", "font.size": 8, "axes.labelsize": 8.5,
-    "axes.titlesize": 9, "legend.fontsize": 7, "xtick.labelsize": 7.5,
+    "axes.titlesize": 9, "legend.fontsize": 8, "xtick.labelsize": 7.5,
     "ytick.labelsize": 7.5, "axes.linewidth": 0.7, "lines.linewidth": 1.1,
 })
 
@@ -47,7 +47,7 @@ def fig4():
     axes[0].plot(ns, rhos, "o-", color="#1f77b4", ms=5)
     for x, y in zip(ns, rhos):
         axes[0].annotate(f"{y:+.2f}", (x, y), textcoords="offset points",
-                         xytext=(0, 6), ha="center", fontsize=7)
+                         xytext=(0, 6), ha="center", fontsize=8)
     axes[0].set_xlabel("number of qubits $n$")
     axes[0].set_ylabel("$\\rho$(effective rank, RFF error)")
     axes[0].set_title("H1 strengthens with system size", fontsize=8.5)
@@ -64,7 +64,7 @@ def fig4():
     axes[1].set_ylabel("quantum advantage")
     axes[1].set_title("Real data: no advantage where classical saturates", fontsize=8.5)
     axes[1].set_xlim(0.92, 1.01)
-    axes[1].legend(frameon=False, fontsize=6.5)
+    axes[1].legend(frameon=False, fontsize=8)
 
     fig.tight_layout(pad=0.6)
     fig.savefig(os.path.join(OUT, "fig4_scaling.pdf"))

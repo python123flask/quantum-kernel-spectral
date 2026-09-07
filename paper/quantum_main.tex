@@ -1,4 +1,4 @@
-\documentclass[a4paper,unpublished,onecolumn,nopdfoutputerror]{quantumarticle}
+\documentclass[a4paper,unpublished,onecolumn,nopdfoutputerror,12pt]{quantumarticle}
 
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
@@ -22,36 +22,29 @@ Classical simulability, generalization advantage, and the role of task difficult
 \begin{abstract}
 Quantum feature maps have been proposed as a route to machine-learning advantage, yet
 two separate questions are often conflated: whether a quantum kernel is \emph{classically
-simulable} (approximable by a classical kernel), and whether it yields a real
-\emph{generalization advantage} over strong classical baselines. We study what spectral
-criteria of the quantum kernel matrix---effective rank, spectral entropy, concentration
-index, gap ratio---can and cannot predict, using a self-contained state-vector simulator
-(no external quantum libraries), four families of feature maps, six tasks with controlled
-structure and difficulty, and tuned classical baselines (RBF with validation-based kernel
-width, random Fourier features, linear and polynomial kernels). Across 721 configurations
-we find that spectral criteria reliably predict classical \emph{simulability} (top-5
-energy: $\rho=-0.80$, $p=1.2\times10^{-15}$; spectral entropy: $\rho=+0.67$,
-$p=1.0\times10^{-9}$, Benjamini--Hochberg corrected), but they do not predict quantum
-\emph{advantage}: the global correlation is indistinguishable from zero
-($|\rho|\lesssim0.07$, $p\ge0.31$), and even its sign is unstable across tasks
-($\rho=+0.38$ in a single-task setting, $\rho=-0.63$ within the cross-term task,
-null elsewhere). The dominant predictor of advantage is the degree to which classical
-baselines saturate a task: advantage correlates strongly and negatively with the best
-classical test accuracy ($\rho=-0.65$, $p=2\times10^{-27}$), and the fraction of
-configurations with positive advantage tracks classical saturation monotonically
-(38.9\% at a baseline of 0.55, 0\% at 0.86 and above). Controlled sweeps identify the
-feature map's frequency scale as the decisive design knob for spectral spread and
-simulability ($\rho=+1.000$, $p=1.4\times10^{-24}$), and show that spectral criteria are
-strongly data-dependent. These results hold at $8$--$16$ qubits, on four real datasets
-(where positive advantage is never observed, $0/48$ configurations), and under noise:
-depolarization preserves the central relations, while amplitude damping reveals a
-boundary---spectral collapse stops indicating classical approximability
-($\rho=+0.04$ versus $+0.35$). We further test two candidate ``task--map matching'' criteria
-(spectral spread ratio and kernel-target alignment): the global predictive power of
-kernel-target alignment ($\rho=-0.42$, $p=1.7\times10^{-10}$) is entirely absorbed by
-classical task difficulty (residual $\rho=+0.001$, $p=0.99$). The results draw a sharp
-boundary for spectral pre-screening and provide concrete evaluation guidelines for
-quantum kernel studies.
+simulable}, and whether it yields a real \emph{generalization advantage} over strong
+classical baselines. We study what spectral criteria of the quantum kernel matrix ---
+effective rank, spectral entropy, concentration index, gap ratio --- can and cannot
+predict, using a self-contained state-vector simulator (no external quantum libraries),
+four feature-map families and six controlled-difficulty tasks, and
+tuned classical baselines (radial basis function, RBF, with validation-based kernel
+width, random Fourier features, linear and polynomial kernels). Across 721 configurations we find that
+spectral criteria reliably predict classical simulability (top-5 energy $\rho=-0.80$,
+$p=1.2\times10^{-15}$; spectral entropy $\rho=+0.67$, $p=1.0\times10^{-9}$;
+Benjamini--Hochberg corrected), but they do not predict quantum advantage: the global
+correlation is indistinguishable from zero ($|\rho|\le0.07$, $p\ge0.31$), and its sign
+is unstable across tasks ($\rho=+0.38$ in a single-task setting, $\rho=-0.63$ within
+the cross-term task, null elsewhere). The dominant predictor of advantage is the
+saturation of classical baselines: advantage correlates strongly and negatively with the
+best classical test accuracy ($\rho=-0.65$, $p=2\times10^{-27}$), and positive advantage
+occurs almost exclusively where classical baselines remain near chance (39\% at 0.55,
+0\% at 0.86). The results hold at $8$--$16$ qubits, on four real datasets ($0/48$
+positive advantage), and under depolarizing noise, while amplitude damping reveals a
+boundary: spectral collapse stops indicating classical approximability ($\rho=+0.04$
+versus $+0.35$). Kernel-target alignment, a popular matching criterion, is also
+absorbed by task difficulty ($\rho=-0.42$ globally, $\rho=+0.001$ after
+residualization). These results draw a sharp boundary for spectral pre-screening and
+provide evaluation guidelines for quantum kernel studies.
 \end{abstract}
 
 \section{Introduction}
@@ -278,6 +271,17 @@ Associations are measured with Spearman rank correlation. Group comparisons use
 Mann--Whitney $U$ tests with Cliff's delta effect sizes and threshold scans. All
 multiple-comparison corrections use the Benjamini--Hochberg FDR procedure; corrected
 values are reported as $q$. Significance is claimed only when $q<0.05$.
+
+Two caveats about the statistics are stated explicitly. First, within each
+(task, seed) block the twelve feature-map variants share the same data, so
+configuration-level correlations should be read with an effective sample size
+smaller than the nominal count in mind; we therefore report task-stratified
+correlations as the primary analysis, and the central associations remain
+significant at that level. Second, the RFF approximation error is measured with
+a finite random-feature budget (which itself approximates the RBF kernel with
+relative error $0.08$--$0.17$ for the gamma values used); the simulability
+metrics therefore contain sampling noise that dilutes, but cannot create,
+the reported associations.
 
 \section{Results}
 \label{sec:results}
@@ -660,21 +664,21 @@ estimate how hard a quantum kernel is to replace classically, and use strong, tu
 classical baselines on tasks above classical saturation to measure whether it is worth
 replacing the classical model at all.
 
-\section*{Author contributions}
+\section*{Acknowledgements}
 The author designed the study, validated all code and results, and takes full
 responsibility for the scientific content. An AI language model assisted with
 drafting and debugging the simulation code, with language editing of the manuscript,
-and with drafting the plotting scripts. All figures were produced by the author's
-numerical plotting scripts (matplotlib) directly from the simulation output data;
-no image-generation model was used for any figure or table visual. The author
-reviewed and approved all code, results, and figures.
+and with drafting the plotting scripts; all figures were produced by the author's
+numerical plotting scripts (matplotlib) directly from the simulation output data,
+and no image-generation model was used. The author declares no conflict of interest.
+No external funding was received for this work.
 
 \section*{Data and code availability}
 All simulation code, analysis scripts, and raw result data (CSV and figure
-generation scripts) used in this study are available with the manuscript
-submission as arXiv ancillary files, and on request from the author. All
-experiments are reproducible with NumPy, SciPy, scikit-learn, and matplotlib
-only.
+generation scripts) are publicly available at
+\href{https://github.com/python123flask/quantum-kernel-spectral}{github.com/python123flask/quantum-kernel-spectral},
+and are included as arXiv ancillary files with the manuscript. All experiments are
+reproducible with NumPy, SciPy, scikit-learn, and matplotlib only.
 
 \bibliographystyle{quantum}
 \bibliography{refs}
