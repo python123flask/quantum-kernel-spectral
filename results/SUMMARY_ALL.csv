@@ -1,0 +1,26 @@
+experiment,x,y,n,rho,p,note,q_fdr
+exp03 (core),best_classical,quantum_advantage,216,-0.651421435676583,1.805705795224401e-27,global difficulty,4.153123329016122e-26
+exp04 (H2),freq_scale,rff_error,45,0.9999999999999999,1.4042654220543602e-24,high_dim,1.0766034902416762e-23
+exp04 (H2),freq_scale,effective_rank,45,0.9999999999999999,1.4042654220543602e-24,high_dim,1.0766034902416762e-23
+exp01 (H1),spectral_entropy,rff_error,64,0.6744796375770382,9.94102068964868e-10,simulability,5.716086896547992e-09
+exp01 (H1),concentration_index,rff_error,64,-0.6102300858916745,8.635672384892633e-08,simulability,3.3574861981739007e-07
+exp01 (H1),effective_rank,rff_error,64,0.6100011649804985,8.758659647410175e-08,simulability,3.3574861981739007e-07
+exp01 (H1),gap_ratio,rff_error,64,-0.5514069108728484,2.3338525653616598e-06,simulability,7.66837271475974e-06
+exp03 (H3-stratified),effective_rank,quantum_advantage,36,-0.6280342843271602,4.120071977215875e-05,task=cross_high,0.00011845206934495641
+exp03 (core-stratified),best_classical,quantum_advantage,36,-0.5068532453425005,0.0016069566215729577,task=noisy_harmonic,0.0041066669217975586
+exp03 (core-stratified),best_classical,quantum_advantage,36,-0.4307773116085596,0.008721827214670406,task=periodic_coupled,0.020060202593741937
+exp03 (core-stratified),best_classical,quantum_advantage,36,-0.38033774327433123,0.022123356115753723,task=cross_high,0.0462579264238487
+exp03 (core-stratified),best_classical,quantum_advantage,36,-0.3669927485601389,0.027685819558512046,task=quantum_friendly,0.053064487487148086
+exp03 (core-stratified),best_classical,quantum_advantage,36,-0.3446087136361201,0.039570647081838106,task=harmonic,0.07000960637555972
+exp03 (H3-stratified),effective_rank,quantum_advantage,36,0.337327429970089,0.04422645677236101,task=noisy_harmonic,0.07265775041173594
+exp03 (H3-stratified),effective_rank,quantum_advantage,36,0.17644115995558063,0.3032966557012471,task=quantum_friendly,0.4650548720752455
+exp03 (H3-stratified),effective_rank,quantum_advantage,36,-0.16157186803545034,0.3464877473914037,task=periodic_coupled,0.4980761368751428
+exp03 (H3-global),spectral_entropy,quantum_advantage,216,-0.052062543193885265,0.44651577047563756,global (all tasks),0.6041095718199802
+exp03 (H3-stratified),effective_rank,quantum_advantage,36,-0.11019863927667267,0.5222958495687705,task=real_breast_cancer,0.6673780300045401
+exp03 (H3-global),gap_ratio,quantum_advantage,216,-0.0230084820311537,0.7366924376322636,global (all tasks),0.8100637317194288
+exp04 (H2),entangle,effective_rank,45,0.19999999999999998,0.7470600781046621,variational,0.8100637317194288
+exp03 (H3-global),effective_rank,quantum_advantage,216,-0.020898412395848085,0.7600662110200828,global (all tasks),0.8100637317194288
+exp03 (core-stratified),best_classical,quantum_advantage,36,-0.049388085975213124,0.774843569470758,task=real_breast_cancer,0.8100637317194288
+exp03 (H3-stratified),effective_rank,quantum_advantage,36,-0.026589339702317655,0.8776627399914064,task=harmonic,0.8776627399914064
+exp01 (H1),eff_rank>median vs <=median,rff_error,64,,,cliff_delta=+0.502,
+exp05 (H4),data_dist (variation),effective_rank,120,,,"see CV summary; angle CV=0.33, high_dim CV=0.47, iqp CV=0.00",
