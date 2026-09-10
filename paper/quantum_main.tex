@@ -359,9 +359,9 @@ insignificantly on the remaining four tasks. The same criterion produces a signi
 positive, a significantly negative, and several null associations within one study.
 
 The single-task signal of exp02 was therefore a task-specific artifact, not a general
-law. We conclude that spectral criteria do not predict generalization advantage, and
-that apparent ``spectral pre-screening for advantage'' results from pooling within a
-favourable task--map combination.
+law. We conclude that spectral criteria do not predict generalization advantage in a
+task-independent way, and that apparent ``spectral pre-screening for advantage'' results
+from pooling within a favourable task--map combination.
 
 \subsection{Advantage window is set by classical saturation}
 \label{sec:difficulty}
@@ -414,6 +414,18 @@ are the ones where the quantum kernel comes closer. This is consistent with a
 mechanism: the quantum kernel provides an alternative hypothesis space that is useful
 precisely when the classical hypothesis space is failing, and useless---or worse---when
 the classical space already solves the problem.
+
+Two observations guard against reading this association as a mere consequence of
+Eq.~\eqref{eq:adv}. At fixed quantum accuracy, a stronger classical baseline lowers the
+advantage by definition; the content of the result lies in how the quantum accuracy
+itself behaves. Across tasks, the mean quantum accuracy varies from 0.49 to 0.77 while
+the best classical baseline varies from 0.52 to 0.94, and the quantum shortfall grows
+with the classical baseline: the gap is 0.016 on periodic-coupled and $-0.004$ on
+noisy-harmonic (where classical baselines remain near chance) but 0.225 on cross-term
+and 0.173 on breast cancer (where they exceed 0.86). The quantum kernel does not
+compensate for a strong classical competitor; it falls furthest behind exactly there.
+Second, the association also holds within a fixed task, where both accuracies vary
+across feature-map variants and seeds, so it is not merely a between-task effect.
 
 \subsection{Design knobs and the frequency-scale law}
 \label{sec:knobs}
