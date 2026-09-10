@@ -28,7 +28,7 @@ effective rank, spectral entropy, concentration index, gap ratio --- can and can
 predict, using a self-contained state-vector simulator (no external quantum libraries),
 four feature-map families and six controlled-difficulty tasks, and
 tuned classical baselines (radial basis function, RBF, with validation-based kernel
-width, random Fourier features, linear and polynomial kernels). Across 721 configurations we find that
+width, random Fourier features, linear and polynomial kernels). Across 781 configurations we find that
 spectral criteria reliably predict classical simulability (top-5 energy $\rho=-0.80$,
 $p=1.2\times10^{-15}$; spectral entropy $\rho=+0.67$, $p=1.0\times10^{-9}$;
 Benjamini--Hochberg corrected), but they do not predict quantum advantage: the global
@@ -566,7 +566,7 @@ The second candidate, centered kernel-target alignment
 $\mathrm{TA}(K,yy^{\top})$ \cite{kubler2021}, is the standard quantity used to argue
 that a kernel ``fits'' a task. At face value TA predicts advantage strongly
 ($\rho=-0.417$, $p=1.7\times10^{-10}$), but this association is entirely explained by
-task difficulty: after residualizing on the best classical accuracy, the remaining
+task difficulty: after rank-space residualization on the best classical accuracy, the remaining
 correlation is $\rho=+0.001$ ($p=0.99$). Alignment correlates with easy tasks; easy
 tasks correlate with saturated classical baselines; saturated classical baselines
 correlate with absent quantum advantage. The apparent predictive power of TA is thus a
@@ -579,7 +579,7 @@ does not already carry.
 \centering
 \includegraphics[width=0.95\textwidth]{fig5_alignment.pdf}
 \caption{Kernel-target alignment and quantum advantage (exp03, $n=216$). Left: TA
-correlates with advantage globally ($\rho=-0.42$). Right: after residualizing on the
+correlates with advantage globally ($\rho=-0.42$). Right: after rank-space residualization on the
 best classical baseline, the association vanishes ($\rho=+0.001$). The full predictive
 power of TA is absorbed by task difficulty.}
 \label{fig:alignment}

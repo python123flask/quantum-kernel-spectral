@@ -27,7 +27,7 @@ criteria of the quantum kernel matrix---effective rank, spectral entropy, concen
 index, gap ratio---can and cannot predict, using a self-contained state-vector simulator
 (no external quantum libraries), four families of feature maps, six tasks with controlled
 structure and difficulty, and tuned classical baselines (RBF with validation-based kernel
-width, random Fourier features, linear and polynomial kernels). Across 721 configurations
+width, random Fourier features, linear and polynomial kernels). Across 781 configurations
 we find that spectral criteria reliably predict classical \emph{simulability} (top-5
 energy: $\rho=-0.80$, $p=1.2\times10^{-15}$; spectral entropy: $\rho=+0.67$,
 $p=1.0\times10^{-9}$, Benjamini--Hochberg corrected), but they do not predict quantum
@@ -563,7 +563,7 @@ The second candidate, centered kernel-target alignment
 $\mathrm{TA}(K,yy^{\top})$ \cite{kubler2021}, is the standard quantity used to argue
 that a kernel ``fits'' a task. At face value TA predicts advantage strongly
 ($\rho=-0.417$, $p=1.7\times10^{-10}$), but this association is entirely explained by
-task difficulty: after residualizing on the best classical accuracy, the remaining
+task difficulty: after rank-space residualization on the best classical accuracy, the remaining
 correlation is $\rho=+0.001$ ($p=0.99$). Alignment correlates with easy tasks; easy
 tasks correlate with saturated classical baselines; saturated classical baselines
 correlate with absent quantum advantage. The apparent predictive power of TA is thus a
