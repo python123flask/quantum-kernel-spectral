@@ -104,6 +104,11 @@ def main():
     df.to_csv(out_csv, index=False)
     print(f"\n[保存] {out_csv} （{len(df)} 条记录）")
 
+    # 关键：分析基于“写出的 CSV 重新读回”的副本，
+    # 保证论文/脚本输出与公开数据（CSV）可用数值完全一致
+    # （内存浮点值与十进制写回在近并列处可能产生秩次差异）
+    df = pd.read_csv(out_csv)
+
     # ============ 分析 ============
     print("\n--- 旋钮与谱结构的相关性（按旋钮分组） ---")
     summary_rows = []
@@ -115,18 +120,18 @@ def main():
                 sub2 = sub[sub["feature_map"] == fm].sort_values("depth")
                 if len(sub2) < 6:
                     continue
-                # 用 depth 均值分组，避免同一 depth 的 seed 重复占权重
-                grp = sub2.groupby("depth")[["effective_rank", "spectral_entropy", "rff_error"]].mean()
-                rho_r, p_r = spearmanr(grp.index, grp["effective_rank"])
-                rho_e, p_e = spearmanr(grp.index, grp["rff_error"])
+                # 全配置口径相关（避免小样本均值相关的渐近 p 值失效：
+                # scipy spearmanr 在 n=5 完全单调时 p 值不可靠）
+                rho_r, p_r = spearmanr(sub2["value"], sub2["effective_rank"])
+                rho_e, p_e = spearmanr(sub2["value"], sub2["rff_error"])
                 summary_rows.append({"knob": knob, "fm": fm, "n": len(sub2),
                                      "rho_rank_vs_knob": rho_r, "p_rank": p_r,
                                      "rho_rff_vs_knob": rho_e, "p_rff": p_e})
                 print(f"  depth({fm}): rank vs depth rho={rho_r:+.3f} (p={p_r:.3g}) | rff vs depth rho={rho_e:+.3f} (p={p_e:.3g})")
         else:
-            grp = sub.groupby("value")[["effective_rank", "spectral_entropy", "rff_error"]].mean()
-            rho_r, p_r = spearmanr(grp.index, grp["effective_rank"])
-            rho_e, p_e = spearmanr(grp.index, grp["rff_error"])
+            # 全配置口径（同上，避免小样本均值相关的 p 值失效）
+            rho_r, p_r = spearmanr(sub["value"], sub["effective_rank"])
+            rho_e, p_e = spearmanr(sub["value"], sub["rff_error"])
             summary_rows.append({"knob": knob, "fm": "high_dim" if knob == "freq_scale" else "variational",
                                  "n": len(sub), "rho_rank_vs_knob": rho_r, "p_rank": p_r,
                                  "rho_rff_vs_knob": rho_e, "p_rff": p_e})

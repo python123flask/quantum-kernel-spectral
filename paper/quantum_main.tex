@@ -132,7 +132,7 @@ $\rho=-0.65$ ($p=1.8\times10^{-27}$), and the fraction of positive-advantage
 configurations falls from 39\% to 0\% as the classical baseline rises from 0.55 to
 0.86 (Sec.~\ref{sec:difficulty}).
 \item The frequency scale of the feature map is the decisive design knob for spectral
-spread and simulability ($\rho=+1.000$, $p=1.4\times10^{-24}$), while entanglement
+spread and simulability ($\rho=+0.985$, $p=3\times10^{-34}$), while entanglement
 strength is not (Sec.~\ref{sec:knobs}); spectral criteria are also strongly
 data-dependent, in ways not explained by data intrinsic dimension
 (Sec.~\ref{sec:datadep}).
@@ -416,28 +416,32 @@ the classical space already solves the problem.
 If spectral criteria are reliable simulability indicators, which design knobs actually
 move the spectrum? exp04 sweeps frequency scale $s$, entanglement strength $e$, and
 circuit depth $d$ (Table~\ref{tab:knobs} and Fig.~\ref{fig:freqscale}). The frequency
-scale is decisive: effective rank and RFF error both follow $s$ with $\rho=+1.000$
-($p=1.4\times10^{-24}$). A larger frequency scale spreads the Fourier content of the
+scale is decisive: effective rank and RFF error both increase monotonically with $s$
+(configuration-level correlations over all 45 swept settings: $\rho=+0.985$,
+$p=3\times10^{-34}$ for effective rank; $\rho=+0.884$, $p=9\times10^{-16}$ for RFF
+error). A larger frequency scale spreads the Fourier content of the
 feature map, distributing the kernel spectrum (higher entropy, higher effective rank)
 and making the kernel harder for RFF to approximate. Entanglement strength from 0 to 1
-has essentially no effect on either quantity ($\rho=+0.20$, ns), a counterintuitive
+has essentially no effect on either quantity ($\rho=+0.09$, ns), a counterintuitive
 result in light of the folklore that entanglement drives concentration. For the IQP
-family, depth moves the RFF error ($\rho=+0.90$, $p=0.037$) but not the effective rank
+family, depth moves the RFF error ($\rho=+0.775$, $p=7\times10^{-4}$) but not the effective rank
 ($\rho=+0.40$, ns), hinting at a mismatch between spectral concentration and
 classical approximability.
 
 \begin{table}[t]
 \centering
-\caption{Design knobs versus spectral structure and simulability (exp04).}
+\caption{Design knobs versus spectral structure and simulability (exp04).
+Correlations are configuration-level Spearman coefficients ($n=45$ for frequency
+scale and entanglement sweeps, $n=15$ for IQP depth).}
 \label{tab:knobs}
 \small
 \begin{tabular}{lccc}
 \toprule
 Knob & $\rho$ vs\ effective rank & $\rho$ vs\ RFF error & significance \\
 \midrule
-frequency scale (high-dim) & $+1.000$ & $+1.000$ & $p=1.4\times10^{-24}$ \\
-entanglement strength (variational) & $+0.200$ & $-0.738$ & ns \\
-depth (IQP) & $+0.400$ & $+0.900$ & rank ns; RFF $p=0.037$ \\
+frequency scale (high-dim) & $+0.985$ & $+0.884$ & $p<10^{-15}$ \\
+entanglement strength (variational) & $+0.093$ & $-0.044$ & ns \\
+depth (IQP) & $+0.400$ & $+0.775$ & rank ns; RFF $p=7\times10^{-4}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -447,7 +451,8 @@ depth (IQP) & $+0.400$ & $+0.900$ & rank ns; RFF $p=0.037$ \\
 \includegraphics[width=0.92\columnwidth]{fig3_freqscale.pdf}
 \caption{The frequency scale $s$ of the high-dimensional feature map is the dominant
 design knob (exp04, depth 2). Left: $s$ versus effective rank. Right: $s$ versus RFF
-approximation error. Both follow $s$ perfectly monotonically ($\rho=+1.000$).}
+approximation error. Both increase monotonically with $s$ ($\rho=+0.985$ for
+effective rank and $+0.884$ for RFF error, configuration level).}
 \label{fig:freqscale}
 \end{figure}
 
