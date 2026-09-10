@@ -252,8 +252,9 @@ and depth, measuring spectral criteria and RFF error.
 \item \textbf{exp05 (data dependence)}: 5 map configs $\times$ 6 data distributions
 $\times$ 4 seeds $=120$ configurations; measures the variation of effective rank across
 data distributions and its relation to PCA intrinsic dimension.
-\item \textbf{exp06 (scaling)}: 51 configurations at $8$, $12$, and $16$ qubits
-($N=250$, two tasks); checks whether the central relations survive larger systems.
+\item \textbf{exp06 (scaling)}: 48 configurations at $8$ and $12$ qubits ($N=250$,
+two tasks) plus 3 pilot configurations at $16$ qubits ($N=150$); checks whether
+the central relations survive larger systems.
 \item \textbf{exp07 (real data)}: 48 configurations on four standard datasets
 (iris, wine, breast-cancer, digits with PCA to $\le8$ features, 8 qubits).
 \item \textbf{exp08 (noise)}: 36 configurations under depolarizing noise
@@ -261,7 +262,11 @@ data distributions and its relation to PCA intrinsic dimension.
 \item \textbf{exp09 (matching criteria)}: reconstruction of all 216 exp03 kernels to
 test two task--map matching criteria: the spectral spread ratio
 $M_1=\mathrm{rank}_Q/\mathrm{rank}_{\mathrm{RBF}}$, and the centered kernel-target
-alignment $\mathrm{TA}(K,yy^{\top})$.
+alignment $\mathrm{TA}(K,yy^{\top})$ (reanalysis of exp03; no new configurations).
+\item \textbf{exp10 (16-qubit scan)}: 24 configurations at $16$ qubits ($N=250$,
+two tasks), completing the scaling scan of exp06.
+\item \textbf{exp11 (amplitude damping)}: 36 configurations under single-qubit
+amplitude-damping noise ($\gamma\in\{0,0.05,0.2,0.4\}$, density-matrix simulation).
 \end{itemize}
 
 \subsection{Statistics}
