@@ -22,3 +22,7 @@ Thumbs.db
 # Data / cache
 data/*
 !data/README.md
+
+# Submission packages (internal, not part of the public repo)
+ps_submission_package/
+pra_submission_package/
