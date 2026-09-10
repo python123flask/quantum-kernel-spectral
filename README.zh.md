@@ -1,7 +1,7 @@
 # 课题：量子特征映射的经典可模拟性谱判据
 
 > Towards a Spectral Criterion for Classical Simulability of Quantum Feature Maps
-> 面向物电院重点学术期刊目录的本科生独立课题（AI × 量子信息交叉）
+
 
 ---
 
@@ -9,12 +9,6 @@
 
 给定量子特征映射，能否在**训练前**用其核矩阵的**谱结构**高效预测量子核的**经典可模拟性**——即它能否被 Random Fourier Features / Nyström 低秩经典核匹配，以及它的"量子泛化优势"何时存在、何时失效。
 
-## 为什么选这个方向
-
-- **热点且认可度高**：经典可模拟性 / dequantization 是 2024-2026 年在 Nature 子刊、PRX 高度活跃的方向。
-- **计算完全可行**：研究 5-12 qubit 小规模量子特征映射即可充分揭示现象，**纯 numpy + CPU 即可**，无需 GPU 或真实量子硬件。
-- **无导师也能走通**：自包含可复现代码 + 明确可验证的科学问题，每阶段有独立产出。
-- **可对准目标期刊**：C 类（物理学三区，如 Quantum / npj QI / NJP / PRA 三区）是主攻，B2（PRA / PRResearch / SCPMA）是冲刺。
 
 ## 核心假设（最终验证状态，2026-09-06）
 
@@ -101,24 +95,7 @@ python3 scripts/exp02_generalization_advantage.py
 | exp10 16 qubit 完整扫描 | H1 保持（ρ=+0.776）；**有效秩与规模完全无关**（angle 恒 9.62 等） |
 | exp11 振幅阻尼 | 强烈压缩有效秩（11.8→2.2）并**破坏 H1**（ρ=+0.04 vs 退极化 +0.35）——噪声类型决定判据有效性 |
 
-论文已更新为 v3（12 页，含新小节 4.6/4.7、Table 4、图 4/5、721+ 配置总述）。
-
-## 期刊定位（已选定）
-
-**主目标期刊：Quantum（quantum-journal.org）——量子科学开放期刊**
-
-选定理由（来自期刊官网作者指南核实）：
-- 明确接收 **theoretical / experimental / numerical** 研究——本课题为纯数值研究，完全匹配
-- 评审标准强调 **verifiability / reproducibility**——本课题自研模拟器+全代码可复现，天然契合
-- **无投稿费、无强制 APC**（运行费靠自愿捐款），本科生独立投稿零成本
-- **无格式/长度限制**，但要求前几页写明主要结果与假设（已在引言加 Contributions 小节 ✓）
-- 必须 **作者贡献声明**（含 AI 使用披露，已在文中 ✓）
-- 投稿流程：arXiv 预印本（须 cross-list quant-ph）→ Scholastica 平台提交
-- 被 Web of Science 收录；具体中科院大类分区**以投稿时最新分区表为准**（本目录 C 类规则：物理大类三区及以上；Quantum 为高选择性物理类期刊）
-
-备选：npj Quantum Information（Nature 系列）、New Journal of Physics（IOP）。
-
-## 投稿版论文（Quantum 模板）
+## 投稿版论文
 
 ```
 paper/
@@ -137,8 +114,6 @@ cd paper
 export TEXINPUTS=~/texmf/tex//:   # 本地安装 revtex 组件用
 xelatex quantum_main.tex && bibtex quantum_main && xelatex quantum_main.tex && xelatex quantum_main.tex
 ```
-
-> 注：本地 tinytex 缺 revtex 组件，已从 CTAN 源码提取 ltxgrid/ltxutil 安装至用户目录。投稿官方平台（Overleaf 的 quantumarticle 模板）可零配置编译。
 
 ## 图片（论文全部使用 PDF 矢量图）
 
