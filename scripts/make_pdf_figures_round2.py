@@ -29,21 +29,21 @@ plt.rcParams.update({
 
 def fig4():
     df6 = pd.read_csv(os.path.join(RESULTS, "exp06_scaling.csv"))
+    df10 = pd.read_csv(os.path.join(RESULTS, "exp10_scaling16.csv"))   # 16 qubit 扫描
     df7 = pd.read_csv(os.path.join(RESULTS, "exp07_real_data.csv"))
     fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.8))
 
-    # 左：rank~rff 随规模
+    # 左：rank~rff 随规模（含 16 qubit，与正文完全对应）
     ns, rhos = [], []
-    for n in [5, 8, 12]:
-        sub = df6[df6["n_qubits"] == n] if n != 5 else None
-        if sub is None:
-            continue
+    for n in [8, 12]:
+        sub = df6[df6["n_qubits"] == n]
         r, _ = spearmanr(sub["effective_rank"], sub["rff_error"])
         ns.append(n); rhos.append(r)
     # 5 qubit 值来自 exp01（主实验）
     df1 = pd.read_csv(os.path.join(RESULTS, "exp01_correlation.csv"))
     r5, _ = spearmanr(df1["effective_rank"], df1["rff_error"])
-    ns = [5] + ns; rhos = [r5] + rhos
+    r16, _ = spearmanr(df10["effective_rank"], df10["rff_error"])
+    ns = [5] + ns + [16]; rhos = [r5] + rhos + [r16]
     axes[0].plot(ns, rhos, "o-", color="#1f77b4", ms=5)
     for x, y in zip(ns, rhos):
         axes[0].annotate(f"{y:+.2f}", (x, y), textcoords="offset points",
@@ -52,6 +52,7 @@ def fig4():
     axes[0].set_ylabel("$\\rho$(effective rank, RFF error)")
     axes[0].set_title("H1 strengthens with system size", fontsize=8.5)
     axes[0].set_ylim(0.5, 0.95)
+    axes[0].set_xticks([5, 8, 12, 16])
 
     # 右：真实数据：经典基线 vs 量子优势
     for ds, c in zip(["iris", "wine", "breast_cancer", "digits"],
