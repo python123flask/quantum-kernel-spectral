@@ -79,10 +79,17 @@ def fig1():
     ).reset_index().sort_values("mean_class")
     axes[1].plot(agg["mean_class"], agg["pos_frac"], "o-",
                  color="0.25", ms=5, lw=1.2)
+    # 每个任务自定义标注偏移，避免文字重叠/压线
+    label_offsets = {
+        "noisy_harmonic": (0, 8), "periodic_coupled": (0, -14),
+        "quantum_friendly": (0, 8), "harmonic": (6, -14),
+        "cross_high": (-14, 10), "real_breast_cancer": (-78, -4),
+    }
     for _, r in agg.iterrows():
+        dx, dy = label_offsets.get(r["task"], (4, 4))
         axes[1].annotate(TASK_LABELS[r["task"]],
                          (r["mean_class"], r["pos_frac"]),
-                         textcoords="offset points", xytext=(4, 4), fontsize=8)
+                         textcoords="offset points", xytext=(dx, dy), fontsize=8)
     axes[1].set_xlabel("task mean best classical accuracy")
     axes[1].set_ylabel("fraction of configs with\npositive advantage")
     axes[1].set_ylim(-0.03, 0.5)
